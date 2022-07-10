@@ -1,0 +1,35 @@
+= REST Docs 문서 만들기
+sr-demo-ref
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[Member-API]]
+== Member API
+
+[[Member-Create]]
+=== Member - POST
+operation::member-controller-test/member_post[snippets='http-request,request-body,request-fields,http-response,response-body,response-fields']
+
+[[Member-GET]]
+=== Member - GET
+operation::member-controller-test/member_get[snippets='http-request,path-parameters,http-response,response-body,response-fields']
+
+[[Member-NOT_FOUND]]
+=== Member - GET_Member not found
+operation::member-controller-test/member_not-found[snippets='http-request,path-parameters,http-response,response-body,response-fields']
+
+[[Members-GET]]
+=== Member - GET_Members pagination
+operation::member-controller-test/members_get[snippets='http-request,request-parameters,http-response,response-body']
+
+[[Member-Patch]]
+=== Member - PATCH
+operation::member-controller-test/member_patch[snippets='http-request,path-parameters,request-body,request-fields,http-response']
+
+[[Member-Delete]]
+=== Member - DELETE
+operation::member-controller-test/member_delete[snippets='http-request,path-parameters,http-response']
