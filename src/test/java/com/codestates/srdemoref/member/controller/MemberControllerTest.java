@@ -27,7 +27,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import static com.codestates.srdemoref.restDocUtils.RestDocsConfig.field;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
@@ -140,11 +139,13 @@ class MemberControllerTest extends RestDocsTestSupport {
                 .phone(phone)
                 .build();
 
-        memberRepository.save(memberMapper.memberPostDtoToMember(requestDto));
+        MemberEntity member = memberRepository.save(memberMapper.memberPostDtoToMember(requestDto));
+        long memberId = member.getMemberId();
+
         //when
 
         ResultActions result = this.mockMvc.perform(
-                        get("/members/{member-id}", 1L)
+                        get("/members/{member-id}", memberId)
                                 .contentType(MediaType.APPLICATION_JSON)
 
 
@@ -207,7 +208,7 @@ class MemberControllerTest extends RestDocsTestSupport {
                 .andDo(
                         restDocs.document(
                                 requestParameters(
-                                        parameterWithName("size").description(10),
+                                        parameterWithName("size").description(5),
                                         parameterWithName("page").description(1)
                                 )
                         )
@@ -228,9 +229,9 @@ class MemberControllerTest extends RestDocsTestSupport {
                 .phone(phone)
                 .build();
 
-        memberRepository.save(memberMapper.memberPostDtoToMember(postRequestDto));
+        MemberEntity member = memberRepository.save(memberMapper.memberPostDtoToMember(postRequestDto));
 
-        long memberId = 1L;
+        long memberId = member.getMemberId();
         MemberEntity.MemberStatus memberStatus = MemberEntity.MemberStatus.MEMBER_SLEEP;
 
         MemberPatchDto patchRequestDto = MemberPatchDto.builder()
@@ -290,11 +291,11 @@ class MemberControllerTest extends RestDocsTestSupport {
                 .phone(phone)
                 .build();
 
-        memberRepository.save(memberMapper.memberPostDtoToMember(requestDto));
-
+        MemberEntity member = memberRepository.save(memberMapper.memberPostDtoToMember(requestDto));
+        long memberId = member.getMemberId();
         //when
         ResultActions result = this.mockMvc.perform(
-                delete("/members/{member-id}", 1L)
+                delete("/members/{member-id}", memberId)
                         .contentType(MediaType.APPLICATION_JSON)
         );
 

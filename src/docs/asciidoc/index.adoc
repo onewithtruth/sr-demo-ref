@@ -1,4 +1,4 @@
-= REST Docs 문서 만들기
+= SR DEMO API DOCUMENT
 sr-demo-ref
 :doctype: book
 :icons: font
@@ -18,12 +18,8 @@ operation::member-controller-test/member_post[snippets='http-request,request-bod
 === Member - GET
 operation::member-controller-test/member_get[snippets='http-request,path-parameters,http-response,response-body,response-fields']
 
-[[Member-NOT_FOUND]]
-=== Member - GET_Member not found
-operation::member-controller-test/member_not-found[snippets='http-request,path-parameters,http-response,response-body,response-fields']
-
 [[Members-GET]]
-=== Member - GET_Members pagination
+=== Member - GET_Members
 operation::member-controller-test/members_get[snippets='http-request,request-parameters,http-response,response-body']
 
 [[Member-Patch]]
@@ -33,3 +29,60 @@ operation::member-controller-test/member_patch[snippets='http-request,path-param
 [[Member-Delete]]
 === Member - DELETE
 operation::member-controller-test/member_delete[snippets='http-request,path-parameters,http-response']
+
+
+
+[[Coffee-API]]
+== Coffee API
+
+[[Coffee-Create]]
+=== Coffee - POST
+operation::coffee-controller-test/post-coffee[snippets='http-request,request-body,request-fields,http-response,response-body,response-fields']
+
+[[Coffee-Patch]]
+=== Coffee - PATCH
+operation::coffee-controller-test/patch-coffee[snippets='http-request,path-parameters,request-body,request-fields,http-response']
+
+[[Coffee-GET]]
+=== Coffee - GET
+operation::coffee-controller-test/get-coffee[snippets='http-request,path-parameters,http-response,response-body,response-fields']
+
+[[Coffees-GET]]
+=== Coffee - GET_Coffees
+operation::coffee-controller-test/get-coffees[snippets='http-request,request-parameters,http-response,response-body']
+
+[[Coffee-Delete]]
+=== Coffee - DELETE
+operation::coffee-controller-test/delete-coffee[snippets='http-request,path-parameters,http-response']
+
+
+
+[[Order-API]]
+== Order API
+
+[[Order-Create]]
+=== Order - POST
+operation::order-controller-test/post-order[snippets='http-request,request-body,request-fields,http-response,response-body,response-fields']
+
+[[Order-Patch]]
+=== Order - PATCH
+operation::order-controller-test/patch-order[snippets='http-request,request-fields,request-body,http-response']
+
+[[Order-GET]]
+=== Order - GET
+operation::order-controller-test/get-order[snippets='http-request,path-parameters,http-response,response-body,response-fields']
+
+[[Orders-GET]]
+=== Order - GET_ORDERS
+operation::order-controller-test/get-orders[snippets='http-request,request-parameters,http-response,response-body']
+
+[[Order-cancel]]
+=== Order - DELETE
+operation::order-controller-test/cancel-order[snippets='http-request,path-parameters,http-response']
+
+[[NOT-TESTED-API]]
+== NOT TESTED API
+
+[[Stamp-cancel]]
+=== Stamp - DELETE
+operation::Not-tested/cancel-stamp[snippets='http-request,path-parameters,http-response']

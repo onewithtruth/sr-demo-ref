@@ -1,6 +1,12 @@
 package com.codestates.srdemoref.member.entity;
 
 import com.codestates.srdemoref.order.entity.OrderEntity;
+import com.codestates.srdemoref.review.entity.ReviewEntity;
+import com.codestates.srdemoref.stamp.entity.StampEntity;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,14 +38,31 @@ public class MemberEntity {
     @Column(length = 20, nullable = false)
     private MemberStatus memberStatus = MemberStatus.MEMBER_ACTIVE;
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @Column(nullable = false, name = "UPDATED_AT")
     private LocalDateTime updatedAt = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<OrderEntity> orderEntities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<ReviewEntity> reviewEntities = new ArrayList<>();
+
+    @OneToOne(mappedBy = "member")
+    private StampEntity stamp;
+
+    public void addStamp(StampEntity stamp) {
+        this.stamp = stamp;
+        if (stamp.getMember() != this) {
+            stamp.setMember(this);
+        }
+    }
 
     public MemberEntity(String email) {
         this.email = email;

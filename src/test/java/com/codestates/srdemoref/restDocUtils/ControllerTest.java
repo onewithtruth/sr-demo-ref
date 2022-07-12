@@ -18,13 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Disabled
-//@WebMvcTest(
-//        controllers = MemberController.class
-//        ,
-//        excludeFilters = {
-//        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = WebMvcConfigurer.class)}
-//)
-//@SpringBootTest
 public abstract class ControllerTest {
     @Autowired
     protected ObjectMapper objectMapper;

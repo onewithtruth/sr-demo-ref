@@ -3,9 +3,11 @@ package com.codestates.srdemoref.coffee.dto;
 import com.codestates.srdemoref.coffee.entity.CoffeeEntity;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Builder
 @Getter
+@Setter
 public class CoffeeResponseDto {
     private long coffeeId;
     private String korName;
